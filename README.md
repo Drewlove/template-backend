@@ -1,0 +1,77 @@
+# Express Boilerplate!
+
+This is a boilerplate project used for starting new projects!
+
+## Set Up: 
+Use CLI for running commands listed below
+
+### I. Clone Repo: Git Clone, npm install, .env variables
+Complete the following steps to start a new project (NEW-PROJECT-NAME):
+
+1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
+2. `cd` into the cloned repository
+3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
+4. In the recently moved .env file, rename the values of the following: MIGRATION_DB_NAME, DATABASE_URL, TEST_DATABASE_URL  
+5. Edit the contents of the `package.json` to change "name" and "description"
+6. Install the node dependencies `npm install`  
+7. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
+
+### II. Create New Project Github Repo 
+1. Open github and create a new repo
+2. Follow the instructions, making the first commit and push of the new project to github
+`git init`  
+`git add . `  
+`git commit -m "first commit"`  
+`git remote add origin https://github.com/username/repo-name.git`  
+`git push -u origin master`
+
+### III. Testing Local Machine
+1. Start the application npm start
+2. Remove the API Key required for HTTP requests by commenting out `app.use(validateBearerToken)` in ./src/app.js
+3. Start nodemon for the application `npm run dev`
+4. Open the browser at http://localhost:9000/test, you should see {"ok": true}   
+*9000 is the PORT specified in src/config.js   
+*{"ok": true} is specified in the app.js file
+
+### IV. Deploy API to Heroku and Setting API Token
+1. When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+2. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
+3. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
+4. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
+
+### V. Refresher on Local Database Creation, Migration and Seeds
+1. Open the PostgresSQL terminal by typing `psql`
+2. Create database, type `create new_database_name`    
+** db_boilerplate is the name of the boilerplate database, and referenced in the .env file, DATABASE_URL, TEST_DATABASE_URL in the config.js, and in the seed.all.sql script
+3. Close the psql terminal, and\or open a window to use the traditional CLI, type `npm run migrate` this will add all of the tables in the migrations folder to the db_boilerplate database
+4. To seed each table in the database with rows, type `psql -f ~/Projects/NAME-OF-NEW-PROJECT/seeds/seed.all.sql new_database_name;` 
+**This command is listed in the ./seeds/seed.all.sql
+5. Verify HTTP requests on local machine by opening browser and typing http://localhost:9000/articles, http://localhost:9000/users results should be presented in JSON format
+
+
+### V. Deploy Database
+1. Createa a database on heroku with the command `heroku addons:create heroku-postgresql:hobby-dev`   
+*hobby-dev is the name of the free plan you have on heroku
+
+2. Connect to the client with the command `psql <connection url>`   
+*Find the connection url by going to Heroku.com, click on the top right grid menu, click data, click on the row that lists the desired database name and application, go to settings, database credentials, view credentials, and copy that URI address  
+*More simply, type the following command `heroku pg:credentials:url` and look for the string after the `connection url:` it should read something like `postgres://very_long_string_numbers_etc.`
+
+3. You can now connect to the database with the command `heroku pg:psql`
+
+
+
+## Scripts
+
+
+
+## Deploying
+
+
+
+## Updating
+You should be updating both github and Heroku on a regular basis. 
+
+Push new updates from your local machine to github to save your work remotely.
+When ready to deploy updates, push updates from your local machine to heroku. 
+
