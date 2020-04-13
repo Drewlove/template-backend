@@ -23,9 +23,9 @@ app.use(
 app.use(helmet())
 
 app.use(validateBearerToken)
-app.use('/users', usersRouter)
-app.use('/articles', articlesRouter)
-app.use('/comments', commentsRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/articles', articlesRouter)
+app.use('/api/comments', commentsRouter)
 
 //Open heroku url in browser, see if {ok: true} appears
 app.get('/TEST', (req, res) => {

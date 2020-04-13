@@ -18,9 +18,9 @@ describe('Articles Endpoints', function() {
 
   after('disconnect from db', () => db.destroy())
 
-  before('clean the table', () => db.raw('TRUNCATE blogful_articles, blogful_users, blogful_comments RESTART IDENTITY CASCADE'))
+  before('clean the table', () => db.raw('TRUNCATE articles, users, comments RESTART IDENTITY CASCADE'))
 
-  afterEach('cleanup',() => db.raw('TRUNCATE blogful_articles, blogful_users, blogful_comments RESTART IDENTITY CASCADE'))
+  afterEach('cleanup',() => db.raw('TRUNCATE articles, users, comments RESTART IDENTITY CASCADE'))
 
   describe(`GET /api/articles`, () => {
     context(`Given no articles`, () => {
@@ -37,11 +37,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('blogful_users')
+          .into('users')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('blogful_articles')
+              .into('articles')
               .insert(testArticles)
           })
       })
@@ -59,11 +59,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert malicious article', () => {
         return db
-          .into('blogful_users')
+          .into('users')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('blogful_articles')
+              .into('articles')
               .insert([ maliciousArticle ])
           }) 
       })
@@ -96,11 +96,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('blogful_users')
+          .into('users')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('blogful_articles')
+              .into('articles')
               .insert(testArticles)
           })
       })
@@ -120,11 +120,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert malicious article', () => {
         return db
-          .into('blogful_users')
+          .into('users')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('blogful_articles')
+              .into('articles')
               .insert([ maliciousArticle ])
           })  
       })
@@ -145,7 +145,7 @@ describe('Articles Endpoints', function() {
     const testUsers = makeUsersArray();
     beforeEach('insert malicious article', () => {
       return db
-        .into('blogful_users')
+        .into('users')
         .insert(testUsers) 
     })
 
@@ -226,11 +226,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('blogful_users')
+          .into('users')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('blogful_articles')
+              .into('articles')
               .insert(testArticles)
           })
       })
@@ -266,11 +266,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('blogful_users')
+          .into('users')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('blogful_articles')
+              .into('articles')
               .insert(testArticles)
           })
       })
