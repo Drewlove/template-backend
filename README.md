@@ -62,11 +62,6 @@ NOTE: The steps below create, migrate, and seed a database based off the default
 5. Verify HTTP requests on local machine by opening browser and typing http://localhost:9000/articles, http://localhost:9000/users results should be presented in JSON format
 
 
-
-
-
-
-
 ### IV. Deploy API to Heroku and Set API Token 
 1. When your new project is ready for deployment, add a new Heroku application with `heroku create`.   
 *This will make a new git remote called "heroku"
