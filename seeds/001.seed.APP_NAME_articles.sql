@@ -1,6 +1,6 @@
-TRUNCATE articles RESTART IDENTITY CASCADE;  
+TRUNCATE article RESTART IDENTITY CASCADE;  
 
-INSERT INTO articles (title, style, content)
+INSERT INTO article (title, style, content)
 VALUES
   ('First post!', 'Interview',
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur deserunt commodi, nobis qui inventore corrupti iusto aliquid debitis unde non. Adipisci, pariatur. Molestiae, libero esse hic adipisci autem neque?'),
