@@ -1,12 +1,8 @@
-TRUNCATE users RESTART IDENTITY CASCADE;
+TRUNCATE app_user RESTART IDENTITY CASCADE;
 
-INSERT INTO users(fullname, username, password, nickname)
+INSERT INTO app_user(first_name, last_name)
 VALUES
-('Drew Love', 'UNdrew', 'password1', 'drewbles'),
-('Dan Souza', 'UNdan', 'password2', 'dun seza'), 
-('Kaitlin Kelleher', 'UNkaitlin', 'password3', 'kitlin');      
-    
-    
-    
-    
+('Drew', 'Love'),
+('Dan', 'Souza'),
+('Kaitlin', 'Keleher');      
     
