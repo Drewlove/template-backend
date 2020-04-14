@@ -25,24 +25,22 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 `git remote add origin https://github.com/username/repo-name.git`  
 `git push -u origin master`
 
-### IV. Deploy API to Heroku and Set API Token 
-1. When your new project is ready for deployment, add a new Heroku application with `heroku create`.   
-*This will make a new git remote called "heroku"
-2. Deploy to heroku with `git push heroku master`
-3. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
-4. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
-5. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
+### III. Initial API Tests
+1. Type `npm run dev` to launch run API on local machine
+2. Open Postman, set Headers `Key` - `Authorization`, `Value` - `Bearer 1234`. This should return `{ok: true}`  
+*1234 is the default API_KEY specified in the .env file, this will eventually need to be changed
 
-### V. Provision, Deploy and Migrate Database to Heroku
-1. Provision the database, type `heroku addons:create heroku-postgresql:hobby-dev`.  
-*hobby-dev is the heroku plan 
-2. Connect to the client `psql <connection url>`  
-* In the place of the `<connection url>` type the actual connection url. To get the url, type `heroku pg:credentials:url` and look for the string after the `connection url:` it should read something like `postgres://very_long_string_numbers_etc.`
-3. You can connect to the heroku database, and run psql commands, with `heroku pg:psql` 
-4. Migrate the database, `npm run migrate:production`.  
-*the boilerplate-api project also has a `"predeploy": "npm audit && npm run migrate:production"` script, so typing `npm run deploy` will also migrate the database to heroku
+### IV. Create, Migrate and Seed Local Database
+NOTE: The steps below create, migrate, and seed a database based off the default files from boilerplate-api. You will need to create new files for migrations and seeds, as well as /src folders, with router and service files, for each table.  
+1. Open psql, `psql postgres`
+2. Create databse, `create database name_of_database;`
+3. Change default name of database in .env file MIGRATION_DB_NAME, DATABASE_URL, TEST_DATABASE_URL 
+4. Migrate database with `npm run migrate` 
+5. Seed database `psql -f ~/Projects/boilerplate-api/seeds/seed.all.sql boilerplate;`  
+*Note that the file and database should be changed to match the current project file and database
 
 
+ GET http://localhost:9000/test, 
 
 
 ### Local Development: REWORK THIS ***PART***
@@ -62,6 +60,31 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 4. To seed each table in the database with rows, type `psql -f ~/Projects/NAME-OF-NEW-PROJECT/seeds/seed.all.sql new_database_name;` 
 **This command is listed in the ./seeds/seed.all.sql
 5. Verify HTTP requests on local machine by opening browser and typing http://localhost:9000/articles, http://localhost:9000/users results should be presented in JSON format
+
+
+
+
+
+
+
+### IV. Deploy API to Heroku and Set API Token 
+1. When your new project is ready for deployment, add a new Heroku application with `heroku create`.   
+*This will make a new git remote called "heroku"
+2. Deploy to heroku with `git push heroku master`
+3. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
+4. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
+5. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
+
+### V. Provision, Deploy and Migrate Database to Heroku
+1. Provision the database, type `heroku addons:create heroku-postgresql:hobby-dev`.  
+*hobby-dev is the heroku plan 
+2. Connect to the client `psql <connection url>`  
+* In the place of the `<connection url>` type the actual connection url. To get the url, type `heroku pg:credentials:url` and look for the string after the `connection url:` it should read something like `postgres://very_long_string_numbers_etc.`
+3. You can connect to the heroku database, and run psql commands, with `heroku pg:psql` 
+4. Migrate the database, `npm run migrate:production`.  
+*the boilerplate-api project also has a `"predeploy": "npm audit && npm run migrate:production"` script, so typing `npm run deploy` will also migrate the database to heroku
+
+
 
 
 

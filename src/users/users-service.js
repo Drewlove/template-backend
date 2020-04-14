@@ -2,31 +2,31 @@ const UsersService = {
     getAllUsers(knex){
         return knex
         .select('*')
-        .from('users')
+        .from('app_user')
     }, 
     getById(knex, id){
         return knex
-        .from('users')
+        .from('app_user')
         .select('*')
-        .where('id', id)
+        .where('app_user_id', id)
         .first()
     }, 
     insertUser(knex, newUser){
         return knex
         .insert(newUser)
-        .into('users')
+        .into('app_user')
         .returning('*')
         .then(rows => {
             return rows[0]
         })
     }, 
     updateUser(knex, id, newFields){
-        return knex('users')
+        return knex('app_user')
         .where({id})
         .update(newFields)
     }, 
     deleteUser(knex, id){
-        return knex('users')
+        return knex('app_user')
         .where({id})
         .delete()
     }
