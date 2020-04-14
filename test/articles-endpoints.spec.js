@@ -18,9 +18,9 @@ describe('Articles Endpoints', function() {
 
   after('disconnect from db', () => db.destroy())
 
-  before('clean the table', () => db.raw('TRUNCATE articles, users, comments RESTART IDENTITY CASCADE'))
+  before('clean the table', () => db.raw('TRUNCATE article, app_user, comment RESTART IDENTITY CASCADE'))
 
-  afterEach('cleanup',() => db.raw('TRUNCATE articles, users, comments RESTART IDENTITY CASCADE'))
+  afterEach('cleanup',() => db.raw('TRUNCATE article, app_user, comment RESTART IDENTITY CASCADE'))
 
   describe(`GET /api/articles`, () => {
     context(`Given no articles`, () => {
@@ -37,11 +37,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('users')
+          .into('app_user')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('articles')
+              .into('article')
               .insert(testArticles)
           })
       })
@@ -59,11 +59,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert malicious article', () => {
         return db
-          .into('users')
+          .into('app_user')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('articles')
+              .into('article')
               .insert([ maliciousArticle ])
           }) 
       })
@@ -96,11 +96,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('users')
+          .into('app_user')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('articles')
+              .into('article')
               .insert(testArticles)
           })
       })
@@ -109,7 +109,7 @@ describe('Articles Endpoints', function() {
         const articleId = 2
         const expectedArticle = testArticles[articleId - 1]
         return supertest(app)
-          .get(`/api/articles/${articleId}`)
+          .get(`/api/article/${articleId}`)
           .expect(200, expectedArticle)
       })
     })
@@ -120,7 +120,7 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert malicious article', () => {
         return db
-          .into('users')
+          .into('app_user')
           .insert(testUsers)
           .then(() => {
             return db
@@ -131,7 +131,7 @@ describe('Articles Endpoints', function() {
 
       it('removes XSS attack content', () => {
         return supertest(app)
-          .get(`/api/articles/${maliciousArticle.id}`)
+          .get(`/api/article/${maliciousArticle.id}`)
           .expect(200)
           .expect(res => {
             expect(res.body.title).to.eql(expectedArticle.title)
@@ -145,7 +145,7 @@ describe('Articles Endpoints', function() {
     const testUsers = makeUsersArray();
     beforeEach('insert malicious article', () => {
       return db
-        .into('users')
+        .into('app_user')
         .insert(testUsers) 
     })
 
@@ -156,7 +156,7 @@ describe('Articles Endpoints', function() {
         content: 'Test new article content...'
       }
       return supertest(app)
-        .post('/api/articles')
+        .post('/api/article')
         .send(newArticle)
         .expect(201)
         .expect(res => {
@@ -164,7 +164,7 @@ describe('Articles Endpoints', function() {
           expect(res.body.style).to.eql(newArticle.style)
           expect(res.body.content).to.eql(newArticle.content)
           expect(res.body).to.have.property('id')
-          expect(res.headers.location).to.eql(`/api/articles/${res.body.id}`)
+          expect(res.headers.location).to.eql(`/api/article/${res.body.id}`)
           const expected = new Intl.DateTimeFormat('en-US').format(new Date())
           const actual = new Intl.DateTimeFormat('en-US').format(new Date(res.body.date_published))
           expect(actual).to.eql(expected)
@@ -226,11 +226,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('users')
+          .into('app_user')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('articles')
+              .into('article')
               .insert(testArticles)
           })
       })
@@ -239,11 +239,11 @@ describe('Articles Endpoints', function() {
         const idToRemove = 2
         const expectedArticles = testArticles.filter(article => article.id !== idToRemove)
         return supertest(app)
-          .delete(`/api/articles/${idToRemove}`)
+          .delete(`/api/article/${idToRemove}`)
           .expect(204)
           .then(res =>
             supertest(app)
-              .get(`/api/articles`)
+              .get(`/api/article`)
               .expect(expectedArticles)
           )
       })
@@ -266,11 +266,11 @@ describe('Articles Endpoints', function() {
 
       beforeEach('insert articles', () => {
         return db
-          .into('users')
+          .into('app_user')
           .insert(testUsers)
           .then(() => {
             return db
-              .into('articles')
+              .into('article')
               .insert(testArticles)
           })
       })
