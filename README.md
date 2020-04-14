@@ -25,7 +25,27 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 `git remote add origin https://github.com/username/repo-name.git`  
 `git push -u origin master`
 
-### III. Testing Local Machine
+### IV. Deploy API to Heroku and Set API Token 
+1. When your new project is ready for deployment, add a new Heroku application with `heroku create`.   
+*This will make a new git remote called "heroku"
+2. Deploy to heroku with `git push heroku master`
+3. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
+4. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
+5. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
+
+### V. Provision, Deploy and Migrate Database to Heroku
+1. Provision the database, type `heroku addons:create heroku-postgresql:hobby-dev`.  
+*hobby-dev is the heroku plan 
+2. Connect to the client `psql <connection url>`  
+* In the place of the `<connection url>` type the actual connection url. To get the url, type `heroku pg:credentials:url` and look for the string after the `connection url:` it should read something like `postgres://very_long_string_numbers_etc.`
+3. You can connect to the heroku database, and run psql commands, with `heroku pg:psql` 
+4. Migrate the database, `npm run migrate:production`.  
+*the boilerplate-api project also has a `"predeploy": "npm audit && npm run migrate:production"` script, so typing `npm run deploy` will also migrate the database to heroku
+
+
+
+
+### Local Development: REWORK THIS ***PART***
 1. Start the application npm start
 2. Remove the API Key required for HTTP requests by commenting out `app.use(validateBearerToken)` in ./src/app.js
 3. Start nodemon for the application `npm run dev`
@@ -33,13 +53,8 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 *9000 is the PORT specified in src/config.js   
 *{"ok": true} is specified in the app.js file
 
-### IV. Deploy API to Heroku and Setting API Token
-1. When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
-2. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
-3. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
-4. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
 
-### V. Refresher on Local Database Creation, Migration and Seeds
+### Refresher on Local Database Creation, Migration and Seeds
 1. Open the PostgresSQL terminal by typing `psql`
 2. Create database, type `create new_database_name`    
 ** db_boilerplate is the name of the boilerplate database, and referenced in the .env file, DATABASE_URL, TEST_DATABASE_URL in the config.js, and in the seed.all.sql script
@@ -47,17 +62,6 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 4. To seed each table in the database with rows, type `psql -f ~/Projects/NAME-OF-NEW-PROJECT/seeds/seed.all.sql new_database_name;` 
 **This command is listed in the ./seeds/seed.all.sql
 5. Verify HTTP requests on local machine by opening browser and typing http://localhost:9000/articles, http://localhost:9000/users results should be presented in JSON format
-
-
-### V. Deploy Database
-1. Createa a database on heroku with the command `heroku addons:create heroku-postgresql:hobby-dev`   
-*hobby-dev is the name of the free plan you have on heroku
-
-2. Connect to the client with the command `psql <connection url>`   
-*Find the connection url by going to Heroku.com, click on the top right grid menu, click data, click on the row that lists the desired database name and application, go to settings, database credentials, view credentials, and copy that URI address  
-*More simply, type the following command `heroku pg:credentials:url` and look for the string after the `connection url:` it should read something like `postgres://very_long_string_numbers_etc.`
-
-3. You can now connect to the database with the command `heroku pg:psql`
 
 
 
