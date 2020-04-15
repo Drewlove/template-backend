@@ -53,10 +53,10 @@ NOTE: The steps below create, migrate, and seed a database based off the default
 
 
 ### Refresher on Local Database Creation, Migration and Seeds
-1. Open the PostgresSQL terminal by typing `psql`
+1. Open the PostgresSQL terminal by typing `psql postgres`
 2. Create database, type `create new_database_name`    
 ** db_boilerplate is the name of the boilerplate database, and referenced in the .env file, DATABASE_URL, TEST_DATABASE_URL in the config.js, and in the seed.all.sql script
-3. Close the psql terminal, and\or open a window to use the traditional CLI, type `npm run migrate` this will add all of the tables in the migrations folder to the db_boilerplate database
+3. Close the psql terminal, open a window to use the traditional CLI, type `npm run migrate` this will add all of the tables in the migrations folder to the db_boilerplate database
 4. To seed each table in the database with rows, type `psql -f ~/Projects/NAME-OF-NEW-PROJECT/seeds/seed.all.sql new_database_name;` 
 **This command is listed in the ./seeds/seed.all.sql
 5. Verify HTTP requests on local machine by opening browser and typing http://localhost:9000/articles, http://localhost:9000/users results should be presented in JSON format
