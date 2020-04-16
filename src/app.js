@@ -10,6 +10,7 @@ const validateBearerToken = require('./validate-bearer-token')
 const usersRouter = require('./users/users-router')
 const articlesRouter = require('./articles/articles-router')
 const commentsRouter = require('./comments/comments-router')
+const boilerplateRouter = require('./boierplate-endpoints/router')
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.use(validateBearerToken)
 app.use('/api/users', usersRouter)
 app.use('/api/articles', articlesRouter)
 app.use('/api/comments', commentsRouter)
+app.use('/api/boilerplate-endpoints', boilerplateRouter)
 
 //Open heroku url in browser, see if {ok: true} appears
 app.get('/TEST', (req, res) => {
