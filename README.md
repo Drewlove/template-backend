@@ -28,7 +28,7 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 ### III. Initial API Tests
 1. Type `npm run dev` to run API on local machine
 2. Open Postman. 
-3. Set url request to: http://localhost:9000 (or whatever port is listed on the console when you entered `npm run dev`)
+3. Set url request to: http://localhost:9000/test (or whatever port is listed on the console when you entered `npm run dev`, and add: `/test`)
 4. Set Headers `Key` - `Authorization`, `Value` - `Bearer 1234`. This should return `{ok: true}`  
 *1234 is the default API_KEY specified in the .env file, this will eventually need to be changed
 
