@@ -36,13 +36,9 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 NOTE: The steps below create, migrate, and seed a database based off the default files from boilerplate-api. You will need to create new files for migrations and seeds, as well as /src folders, with router and service files, for each table.  
 1. Open psql, `psql postgres`
 2. Create databse, `create database name_of_database;`
-3. Change default name of database in .env file MIGRATION_DB_NAME, DATABASE_URL, TEST_DATABASE_URL 
-4. Migrate database with `npm run migrate` 
-5. Seed database `psql -f ~/Projects/boilerplate-api/seeds/seed.all.sql boilerplate;`  
+3. Migrate database with `npm run migrate` 
+4. Seed database `psql -f ~/Projects/boilerplate-api/seeds/seed.all.sql boilerplate;`  
 *Note that the file and database should be changed to match the current project file and database
-
-
- GET http://localhost:9000/test, 
 
 
 ### Local Development: REWORK THIS ***PART***
