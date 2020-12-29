@@ -1,12 +1,12 @@
 const CommentsService = {
     getAllComments(knex) {
-      return knex.select('*').from('blogful_comments')
+      return knex.select('*').from('comment')
     },
   
     insertComment(knex, newComment) {
       return knex
         .insert(newComment)
-        .into('blogful_comments')
+        .into('comment')
         .returning('*')
         .then(rows => {
           return rows[0]
@@ -15,20 +15,20 @@ const CommentsService = {
   
     getById(knex, id) {
       return knex
-        .from('blogful_comments')
+        .from('comment')
         .select('*')
         .where('id', id)
         .first()
     },
   
     deleteComment(knex, id) {
-      return knex('blogful_comments')
+      return knex('comment')
         .where({ id })
         .delete()
     },
   
     updateComment(knex, id, newCommentFields) {
-      return knex('blogful_comments')
+      return knex('comment')
         .where({ id })
         .update(newCommentFields)
     },
