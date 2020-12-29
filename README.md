@@ -58,15 +58,17 @@ The table will have two columns, "name" and "department_id".
 3. In the `/seeds` directory, create the file `001.seed.department.sql` 
 4. Create the seed by pasting the following:  
 ```
-  TRUNCATE department RESTART
-  IDENTITY CASCADE;
-  INSERT INTO department
-  (name)
-  VALUES
-  ('department 1'),
-  ('department 2'),
-  ('department 3'),
-  ('department 4');  
+TRUNCATE department RESTART
+IDENTITY CASCADE;
+
+INSERT INTO department
+    (name)
+VALUES
+    ('department 1'),
+    ('department 2'),
+    ('department 3'),
+    ('department 4'); 
+
 ```
 
 5. In the `/src` directory add a subdirectory titled `departments`. So the path would be `/src/departments`  
@@ -88,12 +90,14 @@ The table will have two columns, "name" and "department_id".
 8. In `/src/departments/departments-router`, find the sections that need to be rewritten by searching for "REWRITE" in the comments and changing them to match the column names for department.  
 9. In `/src/app.js/` add the router:  
   const departmentsRouter = require('./departments/departments-router')
-10. In `/src/app.js/` direct the app to use the router:  
+10. In `/src/app.js/` direct the app to use the router: 
+```
   app.use(validateBearerToken)  
-  app.use('/api/departments', commentsRouter)
+```
 
-
-
+```
+  app.use('/api/departments', departmentsRouter)
+```
 
 
 ### V. Deploy API to Heroku and Set API Token 
