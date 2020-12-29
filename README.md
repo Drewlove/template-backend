@@ -23,7 +23,7 @@ Complete the following steps to start a new project (NEW-PROJECT-NAME):
 `git add . `  
 `git commit -m "first commit"`  
 `git remote add origin https://github.com/username/repo-name.git`  
-`git push -u origin master`
+`git push -u origin main`
 
 ### III. Initial API Tests
 1. Type `npm run dev` to run API on local machine
@@ -105,7 +105,7 @@ app.use("/api/departments", departmentsRouter);
 ### V. Deploy API to Heroku and Set API Token 
 1. When your new project is ready for deployment, add a new Heroku application with `heroku create`.   
 *This will make a new git remote called "heroku"
-2. Deploy to heroku with `git push heroku master`
+2. Deploy to heroku with `git push heroku main`
 3. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
 4. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
 5. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
