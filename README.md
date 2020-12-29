@@ -73,8 +73,8 @@ VALUES
 
 5. In the `/src` directory add a subdirectory titled `departments`. So the path would be `/src/departments`  
 6. In the `/src/departments/` directory, create two files:  
-`/src/departments/departments-router`  
-`/src/departments/departments-service`  
+`/src/departments/router`  
+`/src/departments/service`  
 *NOTE: You can also copy and paste the `/src/boilerplate-endpoints` directory. Steps 5-6 clarify how to do this manually.* 
 7. In `/src/departments/departments-service`, assign the variable tableName to "department" and modify the getById function. See below for example code: 
 ```
