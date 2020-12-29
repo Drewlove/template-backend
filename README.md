@@ -1,4 +1,4 @@
-# Express Boilerplate!
+# Express Boilerplate
 
 This is a boilerplate project used for starting new projects!
 
@@ -37,7 +37,11 @@ NOTE: The steps below create, migrate, and seed a database based off the default
 1. Open psql, `psql postgres`
 2. Create databse, `create database name_of_database;`
 3. Migrate database with `npm run migrate` 
-4. Seed database `psql -f ~/Projects/boilerplate-api/seeds/seed.all.sql boilerplate;`  
+4. Seed database `psql -f ~/Projects/boilerplate-api/seeds/seed.all.sql boilerplate;` 
+5. Test GET on Postman to make sure you can retrieve items recently added to database: 
+URL: http://localhost:9000/api/articles
+Set Headers `Key` - `Authorization`, `Value` - `Bearer 1234`.
+
 *Note that the file and database should be changed to match the current project file and database
 
 
