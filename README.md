@@ -96,7 +96,8 @@ VALUES
 ```
 
 ```
-  app.use('/api/departments', departmentsRouter)
+app.use(validateBearerToken);
+app.use("/api/departments", departmentsRouter);
 ```
 
 
