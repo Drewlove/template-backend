@@ -104,10 +104,12 @@ app.use("/api/departments", departmentsRouter);
 
 ### V. Deploy API to Heroku and Set API Token 
 1. When your new project is ready for deployment, add a new Heroku application with `heroku create`.   
-*This will make a new git remote called "heroku"
-2. Deploy to heroku with `git push heroku main`
+*This will make a new git remote called "heroku"  
+*NOTE: the console will print out the url of the heroku api that was created, for example: https://limitless-stream-84911.herokuapp.com/*
+2. Deploy to heroku with `git push heroku main`  
 3. Generate a new UUID (https://www.uuidgenerator.net/) to use as your production API key and copy it. Now we can set it in Heroku using the following command: `heroku config:set API_TOKEN=paste-your-token-here`   
-4. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`
+4. Test that the API Key works in Postman, by entering `https://NAME-OF-APP-HERE.herokuapp.com/test`, and change the Headers to include: Key: `Authorization`, Value `Bearer UUID-Random-Text-Random-Numbers`  
+*NOTE: For Postman, enter the same url that was printed in the console after running `heroku create`, example: *
 5. You can view the API Key on the heroku website, click on the name of your heroku app, go to settings, scroll down to Config Vars
 
 ### VI. Provision, Deploy and Migrate Database to Heroku
