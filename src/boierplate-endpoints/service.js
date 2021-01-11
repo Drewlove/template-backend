@@ -30,3 +30,5 @@ const service = {
     return knex(table.name).where(`${table.name}_id`, row_id).delete();
   },
 };
+
+module.exports = service;
