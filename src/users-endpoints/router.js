@@ -8,16 +8,27 @@ const endpointRouter = express.Router();
 const jsonParser = express.json();
 
 //REWRITE, include each row from table
-const serializeRow = (row) => ({
-  user_id: row.challenge_id,
-  first_name: xss(row.first_name),
-  first_last: xss(row.last_name),
-});
-
 const table = {
   name: "user",
-  columns: ["user_id", "first_name", "last_name"],
-  rowId: "user_id",
+  columns: [
+    { colName: "user_id", xss: false },
+    { colName: "first_name", xss: true },
+    { colName: "last_name", xss: true },
+  ],
+};
+
+// const serializeRow = (row) => ({
+//   user_id: row.challenge_id,
+//   first_name: xss(row.first_name),
+//   last_name: xss(row.last_name),
+// });
+
+const serializeRow = (row) => {
+  let obj = {};
+  table.columns.forEach((key) => {
+    obj[key.colName] = key.xss ? xss(row[key.colName]) : row[key.colName];
+  });
+  return obj;
 };
 
 endpointRouter
@@ -31,6 +42,7 @@ endpointRouter
       })
       .catch(next);
   })
+  //refactor so this is dynamic, and only requires the table object on line 10 to be changed
   .post(jsonParser, (req, res, next) => {
     const { user_id, first_name, last_name } = req.body;
     const newRow = { user_id, first_name, last_name };
@@ -80,7 +92,7 @@ endpointRouter
       .catch(next);
   })
   .patch(jsonParser, (req, res, next) => {
-    //REWRITE, use table's column names
+    ////refactor so this is dynamic, and only requires the table object on line 10 to be changed
     const { user_id, first_name, last_name } = req.body;
     const rowToUpdate = { user_id, first_name, last_name };
 

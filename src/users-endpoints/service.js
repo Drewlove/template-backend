@@ -1,6 +1,6 @@
 //REWRITE, make note of 'orderRow' if you want rows returned alphabetically
 const table = {
-  name: "user",
+  name: "app_user",
   orderRow: "last_name",
 };
 const service = {
