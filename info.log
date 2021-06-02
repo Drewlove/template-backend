@@ -1,5 +1,20 @@
-{"message":"Unauthorized request to path: /test","level":"error"}
-{"message":"Unauthorized request to path: /test","level":"error"}
-{"message":"Unauthorized request to path: /test","level":"error"}
-{"message":"Unauthorized request to path: /test","level":"error"}
-{"message":"Unauthorized request to path: /test","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer undefined","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer asdf","level":"error"}
+{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer 1","level":"error"}

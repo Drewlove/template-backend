@@ -17,12 +17,6 @@ const table = {
   ],
 };
 
-// const serializeRow = (row) => ({
-//   user_id: row.challenge_id,
-//   first_name: xss(row.first_name),
-//   last_name: xss(row.last_name),
-// });
-
 const serializeRow = (row) => {
   let obj = {};
   table.columns.forEach((key) => {
