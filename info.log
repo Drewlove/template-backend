@@ -1,11 +1,20 @@
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer 1","level":"error"}
-{"message":"get by id: 60b7f40ec3cd820068a2008d","level":"info"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer 1","level":"error"}
-{"message":"get by id: 60b7f40ec3cd820068a2008d","level":"info"}
-{"message":{"app_user_id":1,"auth0_sub":"60b7f40ec3cd820068a2008d","first_name":"drew, davidandrewlove84@gmail.com","last_name":"love"},"level":"info"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer 1","level":"error"}
-{"message":"get by id: 60b7f40ec3cd820068a2008d","level":"info"}
-{"message":{"app_user_id":1,"auth0_sub":"60b7f40ec3cd820068a2008d","first_name":"drew, davidandrewlove84@gmail.com","last_name":"love"},"level":"info"}
+{"message":"patching here","level":"info"}
+{"level":"info"}
+{"level":"info"}
+{"message":{},"level":"info"}
+{"message":"patching here","level":"info"}
+{"message":"drew, davidandrewlove84@gmail.com","level":"info"}
+{"message":"love","level":"info"}
+{"message":{"first_name":"drew, davidandrewlove84@gmail.com","last_name":"love"},"level":"info"}
+{"message":"patching here","level":"info"}
+{"message":"Dumble","level":"info"}
+{"message":"Bumpkins","level":"info"}
+{"message":{"first_name":"Dumble","last_name":"Bumpkins"},"level":"info"}
+{"message":"patching here","level":"info"}
+{"message":"Dumble Doo","level":"info"}
+{"message":"Bumpkee Boo","level":"info"}
+{"message":{"first_name":"Dumble Doo","last_name":"Bumpkee Boo"},"level":"info"}
+{"message":"patching here","level":"info"}
+{"message":"Dumble Doo","level":"info"}
+{"message":"Bumpkee Boo Boy","level":"info"}
+{"message":{"first_name":"Dumble Doo","last_name":"Bumpkee Boo Boy"},"level":"info"}

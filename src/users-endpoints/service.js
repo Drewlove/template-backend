@@ -23,7 +23,7 @@ const service = {
       });
   },
   updateRow(knex, row_id, newFields) {
-    return knex(table.name).where(`${table.name}_id`, row_id).update(newFields);
+    return knex(table.name).where(table.id, row_id).update(newFields);
   },
   deleteRow(knex, row_id) {
     return knex(table.name).where(`${table.name}_id`, row_id).delete();

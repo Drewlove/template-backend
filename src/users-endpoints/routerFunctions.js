@@ -85,8 +85,8 @@ const routerFunctions = {
       .catch(next);
   },
   patch(req, res, next) {
-    const { department_name } = req.body;
-    const rowToUpdate = { department_name };
+    const { first_name, last_name } = req.body;
+    const rowToUpdate = { first_name, last_name };
     const numberOfValues = Object.values(rowToUpdate).filter(Boolean).length;
     if (numberOfValues === 0)
       return res.status(400).json({
@@ -96,12 +96,7 @@ const routerFunctions = {
       });
 
     endpointService
-      .updateRow(
-        req.app.get("db"),
-        req.params.app_user_id,
-        req.params.row_id,
-        rowToUpdate
-      )
+      .updateRow(req.app.get("db"), req.params.row_id, rowToUpdate)
       .then((numRowsAffected) => {
         res.status(204).end();
       })
