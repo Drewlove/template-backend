@@ -1,22 +1,11 @@
 {"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer undefined","level":"error"}
-{"message":"Unauthorized request to path: /api/users","level":"error"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer undefined","level":"error"}
-{"message":"Unauthorized request to path: /api/users","level":"error"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer undefined","level":"error"}
-{"message":"Unauthorized request to path: /api/users","level":"error"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer undefined","level":"error"}
-{"message":"Unauthorized request to path: /api/users","level":"error"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer undefined","level":"error"}
-{"message":"Unauthorized request to path: /api/users","level":"error"}
-{"message":"apiToken is: 1","level":"error"}
-{"message":"authToken is: Bearer asdf","level":"error"}
-{"message":"Unauthorized request to path: /api/users","level":"error"}
+{"message":"authToken is: Bearer 1","level":"error"}
+{"message":"get by id: 60b7f40ec3cd820068a2008d","level":"info"}
 {"message":"apiToken is: 1","level":"error"}
 {"message":"authToken is: Bearer 1","level":"error"}
+{"message":"get by id: 60b7f40ec3cd820068a2008d","level":"info"}
+{"message":{"app_user_id":1,"auth0_sub":"60b7f40ec3cd820068a2008d","first_name":"drew, davidandrewlove84@gmail.com","last_name":"love"},"level":"info"}
 {"message":"apiToken is: 1","level":"error"}
 {"message":"authToken is: Bearer 1","level":"error"}
+{"message":"get by id: 60b7f40ec3cd820068a2008d","level":"info"}
+{"message":{"app_user_id":1,"auth0_sub":"60b7f40ec3cd820068a2008d","first_name":"drew, davidandrewlove84@gmail.com","last_name":"love"},"level":"info"}
