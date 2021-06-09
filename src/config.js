@@ -8,4 +8,7 @@ module.exports = {
     process.env.TEST_DATABASE_URL || "postgresql://postgres@localhost/template",
   DATABASE_NAME: "template",
   PROJECT_FOLDER_NAME: "template-backend",
+  DOMAIN: process.env.AUTH0_DOMAIN,
+  AUDIENCE: process.env.AUTH0_AUDIENCE,
+  CLIENT_ORIGIN: process.env.CLIENT_ORIGIN,
 };

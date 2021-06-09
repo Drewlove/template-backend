@@ -18,3 +18,5 @@
 {"message":"Unauthorized request to path: /api/users","level":"error"}
 {"message":"apiToken is: 1","level":"error"}
 {"message":"authToken is: Bearer 1","level":"error"}
+{"message":"apiToken is: 1","level":"error"}
+{"message":"authToken is: Bearer 1","level":"error"}
